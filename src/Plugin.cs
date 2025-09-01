@@ -9,21 +9,21 @@ namespace AdminAllSpec;
 public class Plugin : BasePlugin
 {
     public override string ModuleName => "AdminAllSpec";
-    public override string ModuleVersion => "1.0.0";
-    public override string ModuleAuthor => "xstage";
+    public override string ModuleVersion => "2.1.0";
+    public override string ModuleAuthor => "xstage (refatorado por Amauri & Copilot)";
 
     public readonly FakeConVar<string> FlagCvar = new("css_adminallspec_flag", "Admin flag", "@css/generic");
 
     private readonly bool[] _hasFlag = new bool[65];
-    private static readonly MemoryFunctionWithReturn<CPlayer_ObserverServices, CCSPlayerPawn, bool> IsValidObserverTarget = new(GameData.GetSignature("IsValidObserverTarget"));
+    private static readonly MemoryFunctionWithReturn<CPlayer_ObserverServices, CCSPlayerPawn, bool> IsValidObserverTarget =
+        new(GameData.GetSignature("IsValidObserverTarget"));
 
     public override void Load(bool hotReload)
     {
         RegisterEventHandler<EventPlayerConnectFull>(OnPlayerConnectFull);
-
         IsValidObserverTarget.Hook(Hook_IsValidObserverTarget, HookMode.Pre);
 
-        FlagCvar.ValueChanged += (sender, value) =>
+        FlagCvar.ValueChanged += (_, _) =>
         {
             foreach (var player in Utilities.GetPlayers())
             {
@@ -39,17 +39,13 @@ public class Plugin : BasePlugin
 
     private HookResult OnPlayerConnectFull(EventPlayerConnectFull @event, GameEventInfo info)
     {
-        var player = @event.Userid;
-
-        OnPlayerConnectFull(player);
-
+        OnPlayerConnectFull(@event.Userid);
         return HookResult.Continue;
     }
 
     private void OnPlayerConnectFull(CCSPlayerController? player)
     {
         if (player is not { IsValid: true, IsBot: false }) return;
-
         _hasFlag[player.Index] = AdminManager.PlayerHasPermissions(player, FlagCvar.Value);
     }
 
@@ -62,16 +58,14 @@ public class Plugin : BasePlugin
         if (observerPlayer is not { IsValid: true }) return HookResult.Continue;
 
         var targetPawn = hook.GetParam<CCSPlayerPawn>(1);
-        if (targetPawn is not { IsValid: true, LifeState: (byte)LifeState_t.LIFE_ALIVE }) return HookResult.Continue;
+        if (targetPawn is not { IsValid: true }) return HookResult.Continue;
 
         var targetPlayer = targetPawn.OriginalController.Value;
-
-        if (targetPlayer is not { Connected: PlayerConnectedState.PlayerConnected, IsValid: true, TeamNum: > 1 }) return HookResult.Continue;
+        if (targetPlayer is not { Connected: PlayerConnectedState.PlayerConnected, IsValid: true }) return HookResult.Continue;
 
         if (_hasFlag[observerPlayer.Index])
         {
             hook.SetReturn(true);
-
             return HookResult.Stop;
         }
 
