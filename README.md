@@ -1,10 +1,10 @@
 # AdminAllSpec
 
-!rcon jointeam 1
+    !rcon jointeam 1
 
 or
 
-!rcon sm_spectate
+    !rcon sm_spectate
 
 no specific command to become a spectator —
 
