@@ -1,0 +1,12 @@
+C:\Users\Mickey\Desktop\AdminAllSpec-main\bin\Debug\net8.0\AdminAllSpec.deps.json
+C:\Users\Mickey\Desktop\AdminAllSpec-main\bin\Debug\net8.0\AdminAllSpec.dll
+C:\Users\Mickey\Desktop\AdminAllSpec-main\bin\Debug\net8.0\AdminAllSpec.pdb
+C:\Users\Mickey\Desktop\AdminAllSpec-main\obj\Debug\net8.0\AdminAllSpec.csproj.AssemblyReference.cache
+C:\Users\Mickey\Desktop\AdminAllSpec-main\obj\Debug\net8.0\AdminAllSpec.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mickey\Desktop\AdminAllSpec-main\obj\Debug\net8.0\AdminAllSpec.AssemblyInfoInputs.cache
+C:\Users\Mickey\Desktop\AdminAllSpec-main\obj\Debug\net8.0\AdminAllSpec.AssemblyInfo.cs
+C:\Users\Mickey\Desktop\AdminAllSpec-main\obj\Debug\net8.0\AdminAllSpec.csproj.CoreCompileInputs.cache
+C:\Users\Mickey\Desktop\AdminAllSpec-main\obj\Debug\net8.0\AdminAllSpec.dll
+C:\Users\Mickey\Desktop\AdminAllSpec-main\obj\Debug\net8.0\refint\AdminAllSpec.dll
+C:\Users\Mickey\Desktop\AdminAllSpec-main\obj\Debug\net8.0\AdminAllSpec.pdb
+C:\Users\Mickey\Desktop\AdminAllSpec-main\obj\Debug\net8.0\ref\AdminAllSpec.dll
